@@ -1,21 +1,35 @@
-def sum_of_3_or_5_multiples(final_number)
-
-  final_sum = 0 #cette variable est la somme finale qui sera retournée. Ici on l'initialise à zéro
-
-  # Ici, lance une boucle qui va de zéro au chiffre "final_number" EXCLU (car on est sur du strictement inférieur)
-  # cette boucle indente à chaque tour une variable (par exemple "current_number") qui vaudra 0 puis 1 puis 2 ... etc.
-
-    if is_multiple_of_3_or_5?(current_number)
-      # si la réponse est "true", alors je rajoute la valeur de "current_number" à la variable "final_sum".
-    else
-      # si la réponse est "false"…ben y a pas de else : ce "current_number" n'est pas multiple,
-      # donc on passe au suivant en oubliant celui-là. On repart dans la boucle.
-    end
-
-  #Ici, positionne la fin de la boucle
-
-  return final_sum #on retourne la variable qui contient la somme du tout
+def is_multiple_of_3_or_5?(current_number)
+  if (current_number % 3 == 0) or (current_number % 5 == 0)
+    return true
+  else return false
+  end
 end
 
-sum_of_3_or_5_multiples(11) #=> 33
-sum_of_3_or_5_multiples(10) #=> 23
+def sum_of_3_or_5_multiples(final_number)
+  current_number = 0
+  multiples = []
+  if final_number.is_a? Integer
+    (0..final_number-1).each do |current_number|
+      is_multiple_of_3_or_5?(current_number)
+        if false
+        else true
+          multiples << current_number
+        end
+    end
+  else puts "Yo ! Je ne prends que les entiers naturels. TG."
+  end
+  sum = 0
+  multiples.each do |value|
+    sum = sum + value
+  end
+end
+
+def menu
+  puts "Bonjour, donnez à ce programme un entier naturel : il vérifira si tous les nombres de 0 jusqu'à lui sont des multiples de 3 ou de 5. Il mettra de côté tous ces nombres et en fera la somme. A quoi ça sert me direz-vous ? A rien vous répondrais-je. Quel entier naturel souhaitez-vous essayer ?"
+  final_number = gets.chomp.to_i
+  if final_number.is_a? Number
+    return final_number
+  else 
+    puts "Yo ! Je ne prends que les entiers naturels. TG."
+  end
+end
